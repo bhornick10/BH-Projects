@@ -1,0 +1,78 @@
+;-----------------------------------------------        
+				AREA    RESET, DATA, READONLY 
+           EXPORT  __Vectors 
+__Vectors  
+              DCD  0x20001000  
+              DCD  Reset_Handler  ; reset vector 
+              ALIGN  
+   
+			AREA   CS2400_Fall2021, CODE, READONLY 
+     ENTRY 
+          EXPORT Reset_Handler 
+Reset_Handler 
+ 
+;------------------------------------------------- 
+
+; Test encryption program using the first letter of your name capital (testEn, testDe)
+
+	LDR R8,=choice ;0 value = encrypt, 1 = decrypt
+	LDR R0, [R8] ; Assign choice to R0
+	LDR R8,=key ; Key value = 9 
+	LDR R1, [R8] ; Assigning key to R1
+	
+	CMP R0, #0 ;Comparing choice to 0
+	BEQ encrypt ; Branching if choice is equal to 0
+	
+	
+; Decrypt section
+	
+	LDR R8,=testDe ; testDe B the first letter of name
+	LDR R5, [R8] ; Assigning testDe to R5
+	
+
+; Plaintext = key (EOR) testDe
+
+	EOR R11,R1,R5 ; XOR the key with the cyphertext 
+	
+; Storing the plaintext in p
+
+	LDR R8,=P ; Putting p into R3
+	LDR R3, [R8]
+	STR R11, [R3] ; Storing the value of R10 in plain text
+
+	B finish ; Branch to finish 
+
+encrypt
+
+	LDR R8,=testEn
+	LDR R9, [R8] ; Assignin testEn to R6
+
+; Cyphertext = Key (EOR) Plaintext
+
+	EOR R10,R1,R9 ; The encription line (R1 = key, R3 = plain) store in R10
+	
+; Storing the value in Cyphertext
+
+	LDR R8,=C
+	LDR R2, [R8]
+	STR R10, [R2]
+	
+finish
+	ADD R0,R0,#0
+	ADD R0,R0,#0
+
+;-------------------------------------- 
+stop   B  stop 
+	
+
+choice DCD 1
+key DCD 0x9
+testEn DCD 0x4e
+testDe DCB "B"
+	
+	AREA data1, DATA, READWRITE
+
+C DCD 0
+P DCD 0			
+
+       END
