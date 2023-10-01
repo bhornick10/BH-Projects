@@ -1,0 +1,585 @@
+//@version=5
+indicator('BH = Market Sentiment vs Stock Table', overlay=true)
+import TradingView/ta/5
+
+// Spy 15
+stock1 = request.security('SPY',timeframe.period,ohlc4)
+// Calculate the absolute percentage change
+percentageChange_spy = ((stock1 - stock1[1]) / math.abs(stock1[1])) * 100
+
+// Apple 15
+stock2 = request.security('AAPL',timeframe.period, ohlc4)
+percentageChange_apple = ((stock2 - stock2[1]) / math.abs(stock2[1])) * 100
+
+// MSFT 15
+stock3 = request.security('MSFT',timeframe.period, ohlc4)
+percentageChange_msft = ((stock3 - stock3[1]) / math.abs(stock3[1])) * 100
+
+// AMZN 15
+stock4 = request.security('AMZN',timeframe.period, ohlc4)
+percentageChange_amzn = ((stock4 - stock4[1]) / math.abs(stock4[1])) * 100
+
+// META 15
+stock5 = request.security('META',timeframe.period, ohlc4)
+percentageChange_meta = ((stock5 - stock5[1]) / math.abs(stock5[1])) * 100
+
+// TSLA 15
+stock6 = request.security('TSLA',timeframe.period, ohlc4)
+percentageChange_tsla = ((stock6 - stock6[1]) / math.abs(stock6[1])) * 100
+
+// UNH 15
+stock7 = request.security('UNH',timeframe.period, ohlc4)
+percentageChange_unh = ((stock7 - stock7[1]) / math.abs(stock7[1])) * 100
+
+// JNJ 15
+stock8 = request.security('JNJ',timeframe.period, ohlc4)
+percentageChange_jnj = ((stock8 - stock8[1]) / math.abs(stock8[1])) * 100
+
+// JPM 15
+stock9 = request.security('JPM',timeframe.period, ohlc4)
+percentageChange_jpm = ((stock9 - stock9[1]) / math.abs(stock9[1])) * 100
+
+// HD 15
+stock10 = request.security('HD',timeframe.period, ohlc4)
+percentageChange_hd = ((stock10 - stock10[1]) / math.abs(stock10[1])) * 100
+
+// BAC 15
+stock11 = request.security('BAC',timeframe.period, ohlc4)
+percentageChange_bac = ((stock11 - stock11[1]) / math.abs(stock11[1])) * 100
+
+// PG 15
+stock12 = request.security('PG',timeframe.period, ohlc4)
+percentageChange_pg = ((stock12 - stock12[1]) / math.abs(stock12[1])) * 100
+
+// MA 15
+stock13 = request.security('MA',timeframe.period, ohlc4)
+percentageChange_ma = ((stock13 - stock13[1]) / math.abs(stock13[1])) * 100
+
+// DIS 15
+stock14 = request.security('DIS',timeframe.period, ohlc4)
+percentageChange_dis = ((stock14 - stock14[1]) / math.abs(stock14[1])) * 100
+
+// VZ 15
+stock15 = request.security('VZ','5', ohlc4)
+percentageChange_vz = ((stock15 - stock15[1]) / math.abs(stock15[1])) * 100
+
+// CMCSA 15
+stock16 = request.security('CMCSA',timeframe.period, ohlc4)
+percentageChange_cmcsa = ((stock16 - stock16[1]) / math.abs(stock16[1])) * 100
+
+// ADBE 15
+stock17 = request.security('ADBE',timeframe.period, ohlc4)
+percentageChange_adbe = ((stock17 - stock17[1]) / math.abs(stock17[1])) * 100
+
+// QQQ 15 (Do not add to combined leave as separe line)
+stock18 = request.security('QQQ',timeframe.period, ohlc4)
+percentageChange_QQQ = ((stock18 - stock18[1]) / math.abs(stock18[1])) * 100
+
+// Rest of the stock tickers
+stock19 = request.security('BRK.B',timeframe.period, ohlc4)
+percentageChange_brk_b = ((stock19 - stock19[1]) / math.abs(stock19[1])) * 100
+
+stock20 = request.security('XOM',timeframe.period, ohlc4)
+percentageChange_xom = ((stock20 - stock20[1]) / math.abs(stock20[1])) * 100
+
+stock21 = request.security('LLY',timeframe.period, ohlc4)
+percentageChange_lly = ((stock21 - stock21[1]) / math.abs(stock21[1])) * 100
+
+stock22 = request.security('ABBV',timeframe.period, ohlc4)
+percentageChange_abbv = ((stock22 - stock22[1]) / math.abs(stock22[1])) * 100
+
+stock24 = request.security('COST',timeframe.period, ohlc4)
+percentageChange_cost = ((stock24 - stock24[1]) / math.abs(stock24[1])) * 100
+
+stock25 = request.security('PEP',timeframe.period, ohlc4)
+percentageChange_pep = ((stock25 - stock25[1]) / math.abs(stock25[1])) * 100
+
+stock26 = request.security('CSCO',timeframe.period, ohlc4)
+percentageChange_cisco = ((stock26 - stock26[1]) / math.abs(stock26[1])) * 100
+
+stock27 = request.security('WMT',timeframe.period, ohlc4)
+percentageChange_walmart = ((stock27 - stock27[1]) / math.abs(stock27[1])) * 100
+
+stock28 = request.security('KO',timeframe.period, ohlc4)
+percentageChange_coca_cola = ((stock28 - stock28[1]) / math.abs(stock28[1])) * 100
+
+stock29 = request.security('CRM',timeframe.period, ohlc4)
+percentageChange_salesforce = ((stock29 - stock29[1]) / math.abs(stock29[1])) * 100
+
+stock30 = request.security('ACN',timeframe.period, ohlc4)
+percentageChange_accenture = ((stock30 - stock30[1]) / math.abs(stock30[1])) * 100
+
+stock31 = request.security('TMO',timeframe.period, ohlc4)
+percentageChange_thermo_fisher = ((stock31 - stock31[1]) / math.abs(stock31[1])) * 100
+
+stock32 = request.security('MCD',timeframe.period, ohlc4)
+percentageChange_mcdonalds = ((stock32 - stock32[1]) / math.abs(stock32[1])) * 100
+
+stock33 = request.security('NFLX',timeframe.period, ohlc4)
+percentageChange_netflix = ((stock33 - stock33[1]) / math.abs(stock33[1])) * 100
+
+stock34 = request.security('BAC',timeframe.period, ohlc4)
+percentageChange_bank_of_america = ((stock34 - stock34[1]) / math.abs(stock34[1])) * 100
+
+stock35 = request.security('PFE',timeframe.period, ohlc4)
+percentageChange_pfizer = ((stock35 - stock35[1]) / math.abs(stock35[1])) * 100
+
+stock36 = request.security('ORCL',timeframe.period, ohlc4)
+percentageChange_oracle = ((stock36 - stock36[1]) / math.abs(stock36[1])) * 100
+
+stock37 = request.security('LIN',timeframe.period, ohlc4)
+percentageChange_linde = ((stock37 - stock37[1]) / math.abs(stock37[1])) * 100
+
+stock38 = request.security('CMCSA',timeframe.period, ohlc4)
+percentageChange_comcast = ((stock38 - stock38[1]) / math.abs(stock38[1])) * 100
+
+stock39 = request.security('ABT',timeframe.period, ohlc4)
+percentageChange_abbott_labs = ((stock39 - stock39[1]) / math.abs(stock39[1])) * 100
+
+stock40 = request.security('AMD',timeframe.period, ohlc4)
+percentageChange_amd = ((stock40 - stock40[1]) / math.abs(stock40[1])) * 100
+
+stock41 = request.security('DHR',timeframe.period, ohlc4)
+percentageChange_danaher = ((stock41 - stock41[1]) / math.abs(stock41[1])) * 100
+
+
+
+// Weighted percentage changes for each stock with normalized weights
+normalizedPercentage_apple = percentageChange_apple * 0.1370
+normalizedPercentage_msft = percentageChange_msft * 0.1281
+normalizedPercentage_amzn = percentageChange_amzn * 0.0642
+normalizedPercentage_meta = percentageChange_meta * 0.0598
+normalizedPercentage_tsla = percentageChange_tsla * 0.0419
+normalizedPercentage_unh = percentageChange_unh * 0.0365
+normalizedPercentage_jnj = percentageChange_jnj * 0.0346
+normalizedPercentage_jpm = percentageChange_jpm * 0.0336
+normalizedPercentage_hd = percentageChange_hd * 0.0338
+normalizedPercentage_bac = percentageChange_bac * 0.0242
+normalizedPercentage_pg = percentageChange_pg * 0.0236
+normalizedPercentage_ma = percentageChange_ma * 0.0234
+normalizedPercentage_dis = percentageChange_dis * 0.0219
+normalizedPercentage_vz = percentageChange_vz * 0.0209
+normalizedPercentage_cmcsa = percentageChange_cmcsa * 0.0201
+normalizedPercentage_adbe = percentageChange_adbe * 0.0189
+normalizedPercentage_QQQ = percentageChange_QQQ * 0.0187
+normalizedPercentage_brk_b = percentageChange_brk_b * 0.0181
+normalizedPercentage_xom = percentageChange_xom * 0.0174
+normalizedPercentage_lly = percentageChange_lly * 0.0154
+normalizedPercentage_abbv = percentageChange_abbv * 0.0150
+normalizedPercentage_cost = percentageChange_cost * 0.0142
+normalizedPercentage_pep = percentageChange_pep * 0.0127
+normalizedPercentage_cisco = percentageChange_cisco * 0.0127
+normalizedPercentage_walmart = percentageChange_walmart * 0.0121
+normalizedPercentage_coca_cola = percentageChange_coca_cola * 0.0119
+normalizedPercentage_salesforce = percentageChange_salesforce * 0.0113
+normalizedPercentage_accenture = percentageChange_accenture * 0.0107
+normalizedPercentage_thermo_fisher = percentageChange_thermo_fisher * 0.0107
+normalizedPercentage_mcdonalds = percentageChange_mcdonalds * 0.0105
+normalizedPercentage_netflix = percentageChange_netflix * 0.0103
+normalizedPercentage_bank_of_america = percentageChange_bank_of_america * 0.0101
+normalizedPercentage_pfizer = percentageChange_pfizer * 0.0101
+normalizedPercentage_oracle = percentageChange_oracle * 0.0101
+normalizedPercentage_linde = percentageChange_linde * 0.0099
+normalizedPercentage_comcast = percentageChange_comcast * 0.0098
+normalizedPercentage_abbott_labs = percentageChange_abbott_labs * 0.0092
+normalizedPercentage_amd = percentageChange_amd * 0.0090
+normalizedPercentage_danaher = percentageChange_danaher * 0.0088
+
+
+
+
+// Combining all stocks into one line with normalized weights
+combined_stocks = (normalizedPercentage_apple + normalizedPercentage_msft + normalizedPercentage_amzn + normalizedPercentage_meta + normalizedPercentage_tsla + normalizedPercentage_unh + normalizedPercentage_jnj + normalizedPercentage_jpm + normalizedPercentage_hd + normalizedPercentage_bac + normalizedPercentage_pg + normalizedPercentage_ma + normalizedPercentage_dis + normalizedPercentage_vz + normalizedPercentage_cmcsa + normalizedPercentage_adbe + normalizedPercentage_QQQ + normalizedPercentage_brk_b + normalizedPercentage_xom + normalizedPercentage_lly + normalizedPercentage_abbv + normalizedPercentage_cost + normalizedPercentage_pep + normalizedPercentage_cisco + normalizedPercentage_walmart + normalizedPercentage_coca_cola + normalizedPercentage_salesforce + normalizedPercentage_accenture + normalizedPercentage_thermo_fisher + normalizedPercentage_mcdonalds + normalizedPercentage_netflix + normalizedPercentage_bank_of_america + normalizedPercentage_pfizer + normalizedPercentage_oracle + normalizedPercentage_linde + normalizedPercentage_comcast + normalizedPercentage_abbott_labs + normalizedPercentage_amd + normalizedPercentage_danaher)
+
+
+
+alpha = input(1,title="Max = 1 The lower the number the less noise")
+
+
+
+
+
+var float customSmoothedValue1 = na
+var float customSmoothedValue2 = na
+var float customSmoothedValue3 = na
+
+
+
+// calculating alpha
+
+if (na(customSmoothedValue1))
+    customSmoothedValue1 := percentageChange_spy
+else
+    customSmoothedValue1 := alpha * percentageChange_spy + (1 - alpha) * customSmoothedValue1
+
+percentageChange_spy := customSmoothedValue1
+
+if (na(customSmoothedValue2))
+    customSmoothedValue2 := combined_stocks
+else
+    customSmoothedValue2 := alpha * combined_stocks + (1 - alpha) * customSmoothedValue2
+
+combined_stocks := customSmoothedValue2
+
+if (na(customSmoothedValue3))
+    customSmoothedValue3 := percentageChange_QQQ
+else
+    customSmoothedValue3 := alpha * percentageChange_QQQ + (1 - alpha) * customSmoothedValue3
+
+percentageChange_QQQ := customSmoothedValue3
+
+
+// 1
+divide_combined_stock_per = input(1,title="(divider)This increases the amount of movement in the indicator")
+smoothing_variable = input(3,title="Ema Length added to smooth out the sentement line")
+// 2
+multiply_combined_stock_per_2 = input(10,title="(multiplier)This increases the amount of movement in the indicator")
+smoothing_variable_2  = input(9,title="Ema Longer Length added to smooth out the sentement line")
+
+
+percentageChange_spy := percentageChange_spy/ divide_combined_stock_per
+combined_stocks_1 = combined_stocks/ divide_combined_stock_per
+combined_stocks_2 = combined_stocks* multiply_combined_stock_per_2
+percentageChange_QQQ_1 = percentageChange_QQQ/ divide_combined_stock_per
+percentageChange_spy_1 = ta.ema(percentageChange_spy,smoothing_variable)
+
+
+// Set bull and bear colors and what makes it bull or bear
+var color color_percentage_change_combined_stocks = na
+var color color_percentage_change_QQQ = na
+var color color_percentage_change_spy = na
+
+
+percentageChange_spy_current_stock_offset = ohlc4 + (ohlc4*percentageChange_spy_1)
+combined_stocks_current_stock_offset = ohlc4 + (ohlc4*combined_stocks_1)
+combined_stocks_current_stock_offset_2 = ohlc4 + (ohlc4*combined_stocks_2)
+percentageChange_QQQ_current_stock_offset = ohlc4 + (ohlc4*percentageChange_QQQ_1)
+
+var string bull_bear = na
+
+
+
+// Color decision for combined stocks
+if  combined_stocks > 0
+    color_percentage_change_combined_stocks:= color.new(#00ff84, 0)
+    bull_bear := 'BULLISH'
+
+
+if  combined_stocks < 0
+    color_percentage_change_combined_stocks:= color.rgb(241, 6, 6)
+    bull_bear := 'BEARISH'
+
+if  not (combined_stocks < 0 or combined_stocks > 0)
+    color_percentage_change_combined_stocks:= color.new(color.gray,10)
+    bull_bear := 'NEUTRAL'
+
+
+
+// Color decision for spy
+if  percentageChange_spy > 0
+    color_percentage_change_spy:= color.new(color.lime,25)
+
+if  percentageChange_spy < 0
+    color_percentage_change_spy:= color.new(color.red,25)
+
+if  not (percentageChange_spy < 0 or percentageChange_spy > 0)
+    color_percentage_change_spy:= color.new(color.white,10)
+
+
+// Color decision for QQQ
+if  percentageChange_QQQ > 0
+    color_percentage_change_QQQ:= color.new(color.lime,25)
+
+if  percentageChange_QQQ < 0
+    color_percentage_change_QQQ:= color.new(color.red,25)
+
+if  not (percentageChange_QQQ < 0 or percentageChange_QQQ > 0)
+    color_percentage_change_QQQ:= color.new(color.white,10)
+
+
+
+// Define Table
+var tbl = table.new(position.top_right, columns=6, rows=3, bgcolor=color.new(color.gray, 80),border_width = 4,border_color = color.white)
+
+// Font Size Input
+fontSize = input(10, title="Font Size")
+
+
+percentageChange_spy_table = percentageChange_spy* 100
+combined_stocks_table = math.round(combined_stocks* 100,2)
+percentageChange_QQQ_table = percentageChange_QQQ* 100
+
+
+// Declare Tabl// Dynamic Visibility Input
+showTable = input(true, title="Show Table")
+
+// Define Table
+if (showTable)
+    table.cell(tbl, 0, 0, 'MARKET \nSentiment', text_color=color.new(color.white, 0),text_size = size.large)
+    table.cell(tbl, 0, 1, bull_bear, text_color=color.new(color_percentage_change_combined_stocks, 0),text_size = size.large)
+    table.cell(tbl, 0, 2, str.tostring(combined_stocks_table), text_color=color.new(color_percentage_change_combined_stocks,0),text_size = size.large)
+
+
+// Must be greater than smoothing_variable
+second_smooth = 9
+
+
+// First line plotted
+combined_stocks := ta.ema(combined_stocks_current_stock_offset,smoothing_variable)
+combined_stocks_2 := ta.ema(combined_stocks_current_stock_offset,second_smooth)
+combined_stocks := (combined_stocks - combined_stocks_2) + ohlc4
+combined_stocks := ta.ema(combined_stocks,5)
+
+plot_1 = input(false,title = "True to plot the longer line")
+
+if plot_1
+    combined_stocks := combined_stocks
+else
+    combined_stocks := na
+
+
+
+// Color decision for combined stocks
+if  combined_stocks > ohlc4
+    color_percentage_change_combined_stocks:= color.new(color.lime,50)
+
+if  combined_stocks < ohlc4
+    color_percentage_change_combined_stocks:= color.rgb(133, 30, 4,50)
+
+if  not (combined_stocks < ohlc4 or combined_stocks > ohlc4)
+    color_percentage_change_combined_stocks:= color.new(color.gray,80)
+
+
+
+
+plot(combined_stocks,linewidth = 2,color = color_percentage_change_combined_stocks)
+
+
+combined_stocks_2 := ta.ema(combined_stocks_current_stock_offset_2,smoothing_variable_2)
+
+
+// Color decision for combined stocks
+if  combined_stocks_2 > ohlc4
+    color_percentage_change_combined_stocks:= color.new(color.lime,0)
+
+if  combined_stocks_2 < ohlc4
+    color_percentage_change_combined_stocks:= color.rgb(133, 30, 4,0)
+
+if  not (combined_stocks_2 < ohlc4 or combined_stocks_2 > ohlc4)
+    color_percentage_change_combined_stocks:= color.new(color.gray,10)
+
+
+plot_2 = input(false,title = "True to plot the longer line")
+
+if plot_2
+    combined_stocks_2 := combined_stocks_2
+else
+    combined_stocks_2 := na
+    
+
+plot(combined_stocks_2,linewidth = 4,color = color_percentage_change_combined_stocks)
+
+
+
+
+// Calculate pivots for QQQ
+high_pivot_combined_stocks = ta.highest(combined_stocks_current_stock_offset,100)
+low_pivot_combined_stocks = ta.lowest(combined_stocks_current_stock_offset,100)
+
+var color high_pivot_combined_stocks_color = na
+var color low_pivot_combined_stocks_color = na
+
+// Color decision for combined stocks
+if combined_stocks_current_stock_offset > 0 
+    high_pivot_combined_stocks_color:= color.new(color.lime,0)
+    low_pivot_combined_stocks_color:= color.new(color.red,50)
+
+if combined_stocks_current_stock_offset < 0 
+    low_pivot_combined_stocks_color:= color.new(color.red,0)
+    high_pivot_combined_stocks_color:= color.new(color.lime,50)
+
+
+
+
+var line line_r_1 = na
+var line line_s_1 = na
+
+
+
+// zlsma
+length = input(title='Length', defval=100)
+offset_21 = input(title='Offset', defval=0)
+src = input(ohlc4, title='Source')
+lsma = ta.linreg(src, length, offset_21)
+lsma2 = ta.linreg(lsma, length, offset_21)
+eq = lsma - lsma2
+zlsma = lsma + eq
+
+color_bull = color.rgb(171, 238, 14)
+color_bear = color.rgb(133, 30, 4)
+
+
+
+// Setting in trade buy and sell
+var bool in_trade_buy = false
+var bool in_trade_sell = false
+
+
+
+ema50 = ta.ema(ohlc4,50)
+vwap = ta.vwap(ohlc4)
+
+// Crossing vwap
+cross_bull = ohlc4 > vwap
+cross_bear = ohlc4 < vwap
+
+
+
+// Define trading hours (7:30 AM to 2:30 PM GMT)
+enterTimeStart = timestamp("GMT-6", year(time), month(time), dayofmonth(time), 7, 30) // 7:30 AM MST
+enterTimeEnd = timestamp("GMT-6", year(time), month(time), dayofmonth(time), 14, 00) // 2:30 PM MST
+
+// Check if current time is within trading hours
+inTradingHours = (time >= enterTimeStart and time < enterTimeEnd)
+
+
+// Check if current time is outside trading hours
+outOfTradingHours = not (time >= enterTimeStart and time < enterTimeEnd)
+
+
+
+ema9 = ta.ema(ohlc4,9)
+
+ema200 = ta.ema(ohlc4,200)
+
+
+
+
+var float lastBuyPrice = na
+var float lastsellPrice = na
+
+
+possible_bull = ohlc4 > zlsma and cross_bull and ohlc4 > ema9 and in_trade_buy == false and not outOfTradingHours and ema50 < ohlc4
+possible_bear = ohlc4 < zlsma and cross_bear and ohlc4 < ema9 and in_trade_sell == false and not outOfTradingHours  and ema50 > ohlc4
+
+
+
+tp_call = in_trade_buy == true and (high > ((lastBuyPrice) + lastBuyPrice*.008)) or (outOfTradingHours and in_trade_buy == true)
+tp_put = in_trade_sell == true and (low < ((lastsellPrice) - lastsellPrice*.008)) or (outOfTradingHours and in_trade_sell == true)
+
+
+if possible_bull and not outOfTradingHours
+    lastBuyPrice := ohlc4
+    in_trade_buy := true
+    in_trade_sell := false
+    lastsellPrice := na
+
+
+if tp_call
+    in_trade_sell := false
+    in_trade_buy := false
+    lastsellPrice := na
+    lastBuyPrice := na
+
+
+
+
+if possible_bear and not outOfTradingHours
+    lastsellPrice := ohlc4
+    in_trade_sell := true
+    in_trade_buy := false
+    lastBuyPrice := na
+
+
+
+if tp_put 
+    in_trade_sell := false
+    in_trade_buy := false
+    lastsellPrice := na
+    lastBuyPrice := na
+
+
+
+
+volume_ema = ta.ema(volume,2)
+
+
+possible_bull := possible_bull and volume > volume_ema[1] and close > open
+possible_bear := possible_bear and volume > volume_ema[1]  and close < open
+
+
+
+
+lookback_2 = input(100,title = "Lookback for pivots")
+lookfwd = 5
+// Use pivot points 
+r1 = ta.pivothigh(low,lookback_2,lookfwd)
+s1 = ta.pivotlow(high,lookback_2,lookfwd)
+
+var int break_high_count = 0
+var int break_low_count = 0
+
+cross_into_r1 = ta.crossover(r1,high) 
+cross_into_s1 = ta.crossunder(s1,low)
+
+break_up_out_of_r1 = ta.crossunder(r1,low)
+break_down_out_of_s1 = ta.crossover(s1,high)
+
+
+
+var label my_label_1 = na
+var label my_label_2 = na
+var bool in_buy = false
+var bool in_sell = false
+var linefill r1_fill = na
+var linefill s1_fill = na
+
+var line id_r = na
+var line id_r_2 = na
+var line id_s = na
+var line id_s_2 = na
+
+var bool below_r1 = false
+var bool above_s1 = false
+
+
+offset = (high - low) + (high[1] - low[1]) / 2
+
+var bool in_trade_buy_both = false
+var bool in_trade_sell_both = false
+
+
+
+
+bull_candle = close > open 
+bear_candle = close < open 
+bear_reverse = bear_candle and cross_into_r1 and ohlc4 < ohlc4[1]
+bull_reverse= bull_candle  and cross_into_s1 and ohlc4 > ohlc4[1]
+
+
+
+// Both being calc
+both_bull = (bull_reverse or bull_reverse[1] or  bull_reverse[2]) and (possible_bull or possible_bull[1] or  possible_bull[2]) and in_trade_buy_both == false
+both_bear = (bear_reverse or bear_reverse[1] or  bear_reverse[2]) and (possible_bear or possible_bear[1] or  possible_bear[2])  and in_trade_sell_both == false
+
+
+
+if both_bull
+    possible_bull := false
+    in_trade_buy_both := true
+    in_trade_sell_both := false
+
+
+if both_bear
+    possible_bear := false
+    in_trade_buy_both := false
+    in_trade_sell_both := true
+
+
+if outOfTradingHours 
+    in_trade_buy := false
+    lastBuyPrice := na
+    in_trade_sell := false
+    lastsellPrice := na
+    in_trade_buy_both := false
+    in_trade_sell_both := false
