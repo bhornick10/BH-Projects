@@ -1,0 +1,193 @@
+<!-- This line is a comment -->
+<!-- In html <> is the same as { in java and </> is the same as } in java -->
+<!-- An example of this would be <head> and </head>  -->
+
+<!DOCTYPE html>
+
+<!-- Starting Tag -->
+<html>
+	<!-- This opens up what goes at the head of the file -->
+	<head>
+	
+		<!-- Title of website -->	
+		<title>HTML Information</title>
+		
+		
+		<!-- Meta tag defines information about file (Metadata)-->
+		<meta charset=="UTF-8">
+		<!-- What google will use to define a website -->
+		<meta name=="description" content="This website will be used to render charts.">	
+		<!-- Keywords for google to use when people search for websites -->	
+		<meta name=="keywords" content="Freqtrade, Youtube, Tradingview, Yahoo Finance, 3D print">	
+		<!-- How it is displayed on different devices -->	
+		<meta name=="viewport" content="width=device-width, initial-scale=1">	
+
+
+			<style>
+
+				/* Additional CSS to center the h1 tag */
+				h1 {
+					text-align: center; /* This will center the h1 content */
+				}
+				    /* Centering text and iframes */
+				main {
+					text-align: center; /* This centers the content inside the <main> element */
+				}
+
+				iframe {
+					display: block; /* Makes the iframe a block-level element */
+					margin: 0 auto; /* Auto margin for left and right to center the iframe */
+					width: 1200px; /* Adjust the width as needed */
+					height: 800px; /* Adjust the height as needed */
+				}
+				
+								body, html {
+					height: 100%;
+					margin: 0;
+					color: white; /* Adjust text color for better visibility */
+				}
+				
+				
+				@keyframes colorChange {
+					100% { color: black; }
+					100% { color: limegreen; }
+				}
+
+
+				body, html {
+					height: 100%;
+					margin: 0;
+				}
+
+				#background-video {
+					position: fixed;
+					right: 0;
+					bottom: 0;
+					min-width: 100%; 
+					min-height: 100%; 
+					width: auto; 
+					height: auto; 
+					z-index: -1; 
+					background-size: cover;
+				}
+
+								
+
+				
+				/* Correcting the keyframes for color change */
+				@keyframes colorChange {
+					0% { color: limegreen; }
+					50% { color: limegreen; }
+					100% { color: black; }
+				}
+
+				/* Apply the animation to links */
+				a {
+					animation: colorChange 1.5s infinite; /* Animation name, duration, and repeat */
+					color: limegreen; /* Initial color */
+					
+				}
+
+				
+
+				/* Style adjustments for better visibility */
+				a {
+					color: limegreen; /* Color of the text */
+					font-size: 40px;
+				}
+				h1, p {
+					background-color: rgba(60,60,60,1.0); /* semi-transparent background for text */
+				}
+
+				/* Additional CSS to center the h1 tag */
+				h1 {
+					color: limegreen;			
+					text-align: center; /* This will center the h1 content */
+				}
+				
+				/* Style for the navigation container */
+				.nav-container {
+					display: flex; /* Enables flexbox */
+					justify-content: space-between; /* Distributes space evenly */
+					padding: 0 10px; /* Adds some padding on the sides */
+				}
+					
+				
+				/* Style for the navigation links */
+				.nav-container a {
+					color: white; /* Color of the text */
+					text-decoration: none; /* Removes underline from links */
+					margin-right: 20px; /* Space between the links */
+				}
+
+				@media (max-width: 600px) {
+					.nav-container {
+						flex-direction: column; /* Stacks links vertically on smaller screens */
+						align-items: center; /* Centers links */
+					}
+
+					.nav-container a {
+						margin-bottom: 10px; /* Space between vertically stacked links */
+						margin-right: 0; /* Remove right margin on smaller screens */
+					}
+				}
+				
+				.centered-text {
+					color: limegreen;
+				}
+				iframe {
+					width: 80%; /* Set width to 100% of its container */
+					height: 88vh; /* Set height relative to viewport height, adjust as needed */
+					border: none; /* Optional: removes the default iframe border */
+					display: block;
+					margin: 0 auto;
+					align-items: center; /* Centers links */				
+				}
+
+			</style>
+				
+
+	</head>
+	
+		<!-- Heading tag where the higher the h number the smaller the text-->
+		<!-- the big command will make the text slightly bigger -->
+		<!-- Can change background color by adding it after the ;-->
+		<h1><big>HTML/CSS</big></h1>
+		
+		
+		<video id="background-video" autoplay loop muted playsinline webkit-playsinline>
+			<source src="Falling_Matrix_Code.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+
+
+
+	
+	<!-- This opens up what goes at the body of the file -->	
+	<!-- This is where most of the functionality goes -->
+	<body>
+	
+	
+			<!-- Navigation container -->
+		<div class="nav-container">
+			<b><big><a href="http://45.33.5.186:9080/"; margin-right: 20px;">Home</a></big></b>
+			<b><big><a href="Bots.html" ; margin-right: 20px;">Freqtrade Bots</a></big></b>
+			<b><big><a href="Youtube_Videos.html" ; margin-right: 20px;">Youtube Videos</a></big></b>
+		</div>
+		
+		
+		
+
+
+		
+		<!-- Main is the dominant content of the body of a document
+		or application-->		
+		<main>
+			<b><big><Iframe src="https://learn.shayhowe.com/advanced-html-css/performance-organization/" target="_blank">Uh oh it wont display</iframe></big></b>
+		</main>
+		
+
+	</body>
+<!-- Ending tag below -->
+</html> 
+		

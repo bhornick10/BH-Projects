@@ -1,0 +1,253 @@
+<!-- This line is a comment -->
+<!-- In html <> is the same as { in java and </> is the same as } in java -->
+<!-- An example of this would be <head> and </head>  -->
+
+<!DOCTYPE html>
+
+<!-- Starting Tag -->
+<html>
+	<!-- This opens up what goes at the head of the file -->
+	<head>
+	
+		<!-- Title of website -->	
+		<title>Brandon.com</title>
+		
+		
+		<!-- Meta tag defines information about file (Metadata)-->
+		<meta charset=="UTF-8">
+		<!-- What google will use to define a website -->
+		<meta name=="description" content="This website will be used to render charts.">	
+		<!-- Keywords for google to use when people search for websites -->	
+		<meta name=="keywords" content="Freqtrade, Youtube, Tradingview, Yahoo Finance, 3D print">	
+		<!-- How it is displayed on different devices -->	
+		<meta name=="viewport" content="width=device-width, initial-scale=1.0">	
+
+
+							
+
+	</head>
+	
+
+
+	
+	<!-- This opens up what goes at the body of the file -->	
+	<!-- This is where most of the functionality goes -->
+	<body>
+	
+
+
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex; /* Flex container */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            overflow: hidden; /* Hide scrollbars */
+        }
+
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 150%; /* Increased width */
+            height: 150%; /* Increased height */
+            object-fit: cover; /* Cover the entire area */
+            z-index: -1;
+        }
+
+        .centered-links {
+            text-align: center;
+            z-index: 2; /* Ensure it's above the background video */
+
+        }
+
+        @keyframes colorChange {
+            color: limegreen;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin: 50px;
+			color: limegreen;
+        }
+
+        a {
+            color: inherit; /* Inherit color from parent */
+            text-decoration: none; /* Remove underline */
+        }
+		
+		h4 {
+            font-size: 100px;
+            margin: 80px;
+			color: limegreen;
+        }
+
+
+		
+    </style>		
+		
+	</head>
+	<body>
+		<h1></h1>
+
+		<video id="background-video" autoplay loop muted playsinline webkit-playsinline style="position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -1; background: url('path/to/fallback-image.jpg') no-repeat; background-size: cover;">
+			<source src="Falling_Matrix_Code.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+
+
+
+	
+		<!-- Input tags for user input -->	
+		<!-- <Input type="text" />-->
+		
+		<!-- Input for password that will hide input-->
+		<!-- <Input type="password" />-->
+		<!-- Textarea input where it can be resized and not just on one line-->	
+			<!-- <Textarea>-->
+			<!-- Enter text-->
+			<!-- </Textarea>-->
+
+		<!-- This allows the user to input a date that brings up a calender-->	
+		<!-- <input type="date"/>-->	
+		<!-- This allows the user to enter a file in from their pc and this is just an input prompt it wont upload the file-->		
+		<!-- <input type="file"/>-->
+		<!-- Radio button for input and it only allows the user to select one button at a time-->		
+		<!-- <input name="btn" type = "radio"/>-->
+		<!-- <input name="btn" type = "radio"/>-->
+		
+		<!-- Creates a clickable submit button-->
+		<!-- <input type="submit"/>-->
+		
+	
+	
+		<!-- Creating a table -->
+		<!-- <table> -->			
+			<!-- Caption for the table above header-->		
+			<!-- <caption><h2>List of Numbers</h2></caption> -->
+		
+			<!-- <tr> -->
+				<!-- Table Header to define columns-->		
+				<!-- <th>Column1</th> -->
+				<!-- <th>Column2</th> -->				
+				<!-- <th>Column3</th> -->		
+			<!-- </tr> -->
+			<!-- One horizontal row -->		
+			<!-- <tr> -->
+				<!-- Table data -->			
+				<!-- <td>one</td> -->
+				<!-- <td>two</td> -->				
+				<!-- <td>three</td> -->			
+			<!-- </tr> -->
+			<!-- Second horizontal row -->		
+			<!-- <tr> -->
+				<!-- Table data -->			
+				<!-- <td>four</td> -->
+				<!-- <td>five</td> -->				
+				<!-- <td>six</td> -->			
+			<!-- </tr> -->
+
+
+		<!-- Centered links -->
+		<div class="centered-links">
+				
+				
+			<big><big><h4><b>Brandon's Website</b></h4></big></big>
+			<h1><b></b></h1>	
+			
+				
+
+			<h1><b><a href="Bots.html">Freqtrade Bots</a></b></h1>
+			<h1><b><a href="contact.html">HTML/CSS</a></b></h1>
+			<h1><b><a href="Youtube_Videos.html">Youtube Videos</a></b></h1>
+			<h1><b><a href="https://www.federalreserve.gov/newsevents/calendar.htm">Federal Reserve Calendar</a></b></h1>
+			<h1><b><a href="https://www.marketwatch.com/economy-politics/calendar">Market Watch</a></b></h1>
+			<h1><b><a href="https://www.youtube.com/watch?v=tPYj3fFJGjk&t=1231s&ab_channel=freeCodeCamp.org">Tensorflow Class</a></b></h1>
+		</div>
+		
+			
+	
+	
+	
+		<!-- Unordered list -->
+		<ul>
+			<!-- Pushing things on to the list -->
+				<!-- <li>Apples</li>-->
+				<!-- <li>Oranges</li>-->
+				<!-- <li>Bananas</li>-->
+
+		
+		</ul>
+		
+		<!-- Ordered list -->
+		<ol>
+			<!-- Pushing things on to the list -->
+			<!-- <li>Apples</li>-->
+			<!-- <li>Oranges</li>-->
+			<!-- <li>Bananas</li>-->
+		
+		</ol>
+		
+		<!-- Description list -->		
+		<dl>
+			<!-- Creating a name for something and then the description right under it -->
+			<!-- <dt>Models</dt>-->
+			<!-- <dd> They are for 3d</dd>-->
+		
+		
+		
+		</dl>		
+		<!-- Header and then the main content goes under header then main-->
+		<header>
+		<!--Nav tag to have links to other pages onabort
+		the website like the home page and the about page-->
+		<nav>
+		
+		</nav>	
+		
+		</header>
+				<!-- Iframe for embedding different websites into yours -->
+
+
+		
+		<!-- Main is the dominant content of the body of a document
+		or application-->		
+		<main>
+
+
+
+
+	
+			<!-- article is telling the website that this is where 
+			text for the article is (used for blogs a lot)-->				
+			<article>
+				<section>
+				<!-- This is where I am going to create a clickable
+				link-->	
+				</section>
+			
+			</article>
+		
+		</main>
+		
+
+		
+		
+
+		<!-- Paragraph <p> tag the b is to make it bold-->
+		<!-- Main colors are -- ( black white gray silver maroon 
+		red purple fushsia green lime olive yellow navy 
+		blue teal aqua )-->	
+		<!-- Below that part is style="color: blue;" blue is used for clickable words-->		
+		<!--<p style="color: teal;">This website will show </p>-->
+		<!-- <b> makes the text bold <i> makes it italic-->
+		<!--<p><b><i><big>Math Problems</big></i></b></p>-->
+		<!-- <sup> is good if showing something to the power of something-->	
+		<!--<p>10<sup>2</sup> = 100</p>-->
+	
+	</body>
+<!-- Ending tag below -->
+</html> 
